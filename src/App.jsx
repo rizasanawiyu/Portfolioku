@@ -2,7 +2,7 @@ import Content from "./components/Content";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
-
+import React from "react"
 
 function LoggedInComponent(){
   return(
@@ -27,7 +27,16 @@ function AuthComponent(props){
   }
   return <LoginComponent />
 }
-
+  
+function ChildrenComponent(props){
+  return(
+    <ul>
+      {React.Children.map(props.children, child =>(
+        <li>{child}</li>
+      ))}
+    </ul>
+  );
+}
 function App() {
   return (
     <>
@@ -36,6 +45,10 @@ function App() {
         <Header />
         <Hero />
       </div>
+      <ChildrenComponent>
+        <p>Portfolio - 1</p>
+        <p>Portfolio - 2</p>
+      </ChildrenComponent> 
       <Content />
       <Footer />
     </>
